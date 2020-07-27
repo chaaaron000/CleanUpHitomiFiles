@@ -1,11 +1,6 @@
 import os
 from shutil import move, rmtree
 
-TARGET_PATH = r"C:\Users\bjpow\Documents\CleanUpHitomiFiles\toclassify"
-GOAL_PATH = r"C:\Users\bjpow\Documents\CleanUpHitomiFiles\classified"
-
-folder_list = os.listdir(TARGET_PATH)
-
 
 def get_author(folder_name):
     author = ""
@@ -21,7 +16,8 @@ def get_author(folder_name):
         return author[1:]
 
 
-def clean_up():
+def clean_up(TARGET_PATH, GOAL_PATH):
+    folder_list = os.listdir(TARGET_PATH)
     for folder in folder_list:
         author = get_author(folder)
         if author:
@@ -34,6 +30,3 @@ def clean_up():
             else:
                 rmtree(f"{TARGET_PATH}\\{folder}")
     print("Done")
-
-
-clean_up()
